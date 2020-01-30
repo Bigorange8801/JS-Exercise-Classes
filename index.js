@@ -41,7 +41,22 @@ class Airplane {
 */
 
 class Person {
-
+  constructor(name, age){
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+  }
+  eat(food){
+    if(this.stomach.length < 10){
+      this.stomach.push(food);
+    }
+  }
+  poop(){
+    this.stomach.length = 0;
+  }
+  toString(){
+    return `${this.name}, ${this.age}`;
+  }
 }
 
 /*
@@ -59,7 +74,26 @@ class Person {
 */
 
 class Car {
-
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  fill(gallons){
+    this.tank += gallons;
+  }
+  drive(distance){
+    let dm = this.tank * this.milesPerGallon; //drivable miles
+    if(distance < dm){
+      this.odometer += distance;
+      this.tank -= (this.odometer / this.milesPerGallon);
+    }else if(distance >= dm) {
+      this.tank = 0;
+      this.odometer += dm;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+  }
 }
 
 /*
@@ -75,7 +109,14 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+  constructor(attr){
+    this.name = attr.name;
+    this.age = attr.age;
+    this.location = attr.location;
+  }
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
+  }
 }
 
 /*
@@ -93,6 +134,17 @@ class Lambdasian {
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 class Instructor {
+  constructor(attr){
+    this.specialty = attr.specialty;
+    this.favLanguage = attr.favLanguage;
+    this.catchPharse = attr.catchPharse;
+  }
+  demo(subject){
+    return `Today we are learning a ${subject}`
+  }
+  grade(student,subject){
+    `${student.name} receives a perfect score on ${subject}`
+  }
 
 }
 
@@ -112,7 +164,7 @@ class Instructor {
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 class Student {
-
+ 
 }
 
 /*
